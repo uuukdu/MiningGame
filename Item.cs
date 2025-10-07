@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace MiningGame
 {
-    // 아이템 종류
-    public enum ItemType
+    public abstract class Item
     {
-        Mineral,
-        Pickaxe
+        public string Name { get; set; }
     }
 
-    // 곡괭이 종류
-    public enum PickaxeType
+    public class Mineral : Item
     {
-        Stone,
-        Iron,
-        Gold
+        // 광물 클래스에만 필요한 판매 가격 속성
+        public int SellPrice { get; set; }
     }
 
-    // 광물 종류
-    public enum MineralType
+    public class Pickaxe : Item
     {
-        Dirt,
-        Stone,
-        Iron,
-        Gold
+        // 곡괭이 클래스에만 필요한 구매 가격 속성
+        public int Price { get; set; }
     }
 
-    class Item
+    public static class Items
     {
-        public string Name { get; set; } // 아이템 이름
-        public ItemType Type { get; set; } // 아이템 종류
-        public int Price { get; set; } // 상점 구매 가격
-        public int SellPrice { get; set; } // 상점 판매 가격
+        // 광물
+        public static readonly Mineral Stone = new Mineral { Name = "돌", SellPrice = 5 };
+        public static readonly Mineral Iron = new Mineral { Name = "철", SellPrice = 10 };
+        public static readonly Mineral Gold = new Mineral { Name = "금", SellPrice = 15 };
+        public static readonly Mineral Diamond = new Mineral { Name = "다이아몬드", SellPrice = 20 };
+
+        // 곡괭이
+        public static readonly Pickaxe StonePickaxe = new Pickaxe { Name = "돌 곡괭이", Price = 0 };
+        public static readonly Pickaxe IronPickaxe = new Pickaxe { Name = "철 곡괭이", Price = 100 };
+        public static readonly Pickaxe GoldPickaxe = new Pickaxe { Name = "금 곡괭이", Price = 200 };
+        public static readonly Pickaxe DiamondPickaxe = new Pickaxe { Name = "다이아몬드 곡괭이", Price = 300 };
     }
 }

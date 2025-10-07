@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace MiningGame
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
+            Menu menu = new Menu();
+            menu.Run();
         }
     }
 }

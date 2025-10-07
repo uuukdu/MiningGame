@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace MiningGame
 {
-    class Shop
+    public class Shop
     {
+        // 상점 메인 메뉴
         public void ShowMenu(Player player)
         {
-            // 상점 메뉴 출력
+            // 1. 아이템 판매
+            // 2. 아이템 구매
+            // 3. 나가기
         }
 
+        // 아이템 판매
         public void Sell(Player player)
         {
-            // 소지한 아이템 판매 및 골드 지급
         }
 
+        // 아이템 구매
         public void Buy(Player player)
         {
-            // 아이템 구매
         }
     }
 }
