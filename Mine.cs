@@ -211,7 +211,7 @@ namespace MiningGame
             _map[MapHeight / 2, MapWidth / 2] = BlockType.Empty;
         }
 
-        // 맵과 플레이어 그리는 메서드
+        // 전체 맵
         private void DisplayMap(Player player, int pX, int pY, bool fullDraw)
         {
             if (fullDraw) // 전체 그리기
@@ -227,7 +227,7 @@ namespace MiningGame
             DrawPlayer(player, pX, pY); // 플레이어는 항상 그림
         }
 
-        // 블록 하나 다시 그리는 메서드
+        // 블록
         private void DrawBlock(int x, int y)
         {
             // 커서를 해당 위치로 이동 (가로는 2칸씩 차지하므로 x*2)
@@ -239,28 +239,28 @@ namespace MiningGame
             switch (block)
             {
                 case BlockType.Wall:
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     blockChar = '■';
                     break;
                 case BlockType.Dirt:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    blockChar = '■';
+                    blockChar = '▨';
                     break;
                 case BlockType.Stone:
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    blockChar = '■';
+                    blockChar = '●';
                     break;
                 case BlockType.Iron:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    blockChar = '■';
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    blockChar = '●';
                     break;
                 case BlockType.Gold:
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    blockChar = '■';
+                    blockChar = '●';
                     break;
                 case BlockType.Diamond:
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    blockChar = '■';
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    blockChar = '●';
                     break;
                 case BlockType.Empty:
                     Console.Write("  "); // 빈 공간은 2칸 공백
@@ -270,11 +270,11 @@ namespace MiningGame
             Console.ResetColor();
         }
 
-        // 플레이어 다시 그리는 메서드
+        // 플레이어
         private void DrawPlayer(Player player, int pX, int pY)
         {
             Console.SetCursorPosition(pX * 2, pY + 1);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
             char playerChar = ' ';
             switch (player.PlayerDirection)
             {

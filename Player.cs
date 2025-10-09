@@ -24,7 +24,7 @@ namespace MiningGame
         public Player(string name)
         {
             Name = name;
-            Gold = 0;
+            Gold = 1000;
             Inventory = new Inventory();
             EquippedPickaxe = Items.StonePickaxe;
             PlayerDirection = Direction.Down; // 시작할 때 기본적으로 아래쪽을 보도록 설정함
@@ -35,7 +35,7 @@ namespace MiningGame
         {
             Console.Clear();
             Console.WriteLine("==========[내 정보]==========");
-            Console.WriteLine($"닉네임: {Name}");
+            Console.WriteLine($"\n닉네임: {Name}");
             Console.WriteLine($"골드: {Gold} G");
             Console.WriteLine($"장착중인 곡괭이: {EquippedPickaxe.Name}");
 

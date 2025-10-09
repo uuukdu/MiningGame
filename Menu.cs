@@ -36,12 +36,12 @@ namespace MiningGame
             while (_isRunning)
             {
                 Console.Clear();
-                Console.WriteLine("====================");
-                Console.WriteLine("1. 광산 이동");
+                Console.WriteLine("==========[메인 메뉴]==========");
+                Console.WriteLine("\n1. 광산 이동");
                 Console.WriteLine("2. 상점 이동");
                 Console.WriteLine("3. 내 정보 보기");
                 Console.WriteLine("\nESC키를 누르면 게임을 종료합니다.");
-                Console.WriteLine("====================");
+                Console.WriteLine("==============================");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
@@ -71,13 +71,13 @@ namespace MiningGame
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("==========================");
-                Console.WriteLine("1. 돌 광산");
+                Console.WriteLine("==========[광산 메뉴]==========");
+                Console.WriteLine("\n1. 돌 광산");
                 Console.WriteLine("2. 철 광산");
                 Console.WriteLine("3. 금 광산");
                 Console.WriteLine("4. 다이아몬드 광산");
                 Console.WriteLine("\n뒤로 가려면 ESC키를 눌러주세요.");
-                Console.WriteLine("==========================");
+                Console.WriteLine("==============================");
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
