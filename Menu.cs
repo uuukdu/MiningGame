@@ -8,7 +8,7 @@ namespace MiningGame
         private Player _player; // 게임의 플레이어 객체를 저장할 변수
         private Shop _shop; // 상점 객체를 저장할 변수
 
-        // 게임의 전체 흐름을 담당하는 메인 메서드
+        // 게임의 전체 흐름 메서드
         public void Run()
         {
             Init();
@@ -19,6 +19,8 @@ namespace MiningGame
         // 게임 초기화
         private void Init()
         {
+            Console.CursorVisible = false;
+            Console.SetWindowSize(60, 35);
             Console.WriteLine("Mining Game");
             Console.Write("플레이어의 이름을 입력해주세요: ");
             string playerName = Console.ReadLine();
@@ -45,22 +47,21 @@ namespace MiningGame
 
                 switch (choice)
                 {
-                    case "1": ShowMineMenu(); break; // 광산 메뉴 메서드 호출
+                    case "1":
+                        ShowMineMenu();
+                        break;
                     case "2":
-                        Console.Clear();
-                        // 기능 구현해야함
-                        Console.WriteLine("\n>> 상점"); 
-                        Console.ReadKey();
+                        _shop.ShowMenu(_player);
                         break;
                     case "3":
-                        _player.ShowStatus(); // Player 클래스의 ShowStatus() 메서드 호출
+                        _player.ShowStatus();
                         Console.WriteLine("\n아무 키나 누르면 메뉴로 돌아갑니다.");
                         Console.ReadKey();
                         break;
-                    case "4": 
-                        _isRunning = false; // while문을 탈출하기 위해 false로 변경
+                    case "4":
+                        _isRunning = false;
                         break;
-                    default: // 다른 입력을 했을 경우
+                    default:
                         Console.WriteLine("\n>> 잘못된 입력입니다. 다시 선택해주세요.");
                         Console.ReadKey();
                         break;
@@ -86,20 +87,11 @@ namespace MiningGame
 
                 switch (choice)
                 {
-                    case "1": 
-                        EnterMine(Mines.StoneMine); 
-                        break;
-                    case "2": 
-                        EnterMine(Mines.IronMine); 
-                        break;
-                    case "3": 
-                        EnterMine(Mines.GoldMine); 
-                        break;
-                    case "4": 
-                        EnterMine(Mines.DiamondMine); 
-                        break;
-                    case "5": 
-                        return;
+                    case "1": EnterMine(Mines.StoneMine); break;
+                    case "2": EnterMine(Mines.IronMine); break;
+                    case "3": EnterMine(Mines.GoldMine); break;
+                    case "4": EnterMine(Mines.DiamondMine); break;
+                    case "5": return;
                     default:
                         Console.WriteLine("\n>> 잘못된 입력입니다. 다시 선택해주세요.");
                         Console.ReadKey();
@@ -115,7 +107,7 @@ namespace MiningGame
             // 플레이어의 인벤토리에 필요한 곡괭이가 있다면
             if (_player.Inventory.HasPickaxe(mine.RequiredPickaxe))
             {
-                // 있다면 해당 광산의 EnterMine 메서드 호출 (광산 입장)
+                // 해당 광산 입장
                 mine.EnterMine(_player);
             }
             // 곡괭이가 없다면?

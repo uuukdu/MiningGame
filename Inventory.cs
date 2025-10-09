@@ -25,7 +25,7 @@ namespace MiningGame
             // 들어온 item이 Mineral 타입인지 확인
             if (item is Mineral mineral)
             {
-                // 딕셔너리에 이미 해당 광물이 있는지 확인
+                // 이미 해당 광물이 있는지 확인
                 if (_minerals.ContainsKey(mineral))
                 {
                     _minerals[mineral]++; // 있다면 개수만 1 증가
@@ -34,7 +34,6 @@ namespace MiningGame
                 {
                     _minerals.Add(mineral, 1); // 없다면 새로 추가하고 개수는 1
                 }
-                Console.WriteLine($"\n>> {mineral.Name} 1개 획득. (현재: {_minerals[mineral]}개)");
             }
             // 들어온 item이 Pickaxe 타입인지 확인
             else if (item is Pickaxe pickaxe)
@@ -48,20 +47,33 @@ namespace MiningGame
             }
         }
 
+        // 아이템 제거 기능
+        public void RemoveItem(Mineral mineral, int amount)
+        {
+            if (_minerals.ContainsKey(mineral))
+            {
+                _minerals[mineral] -= amount; // 수량만큼 빼기
+                if (_minerals[mineral] <= 0)
+                {
+                    _minerals.Remove(mineral); // 0개 이하가 되면 목록에서 완전히 제거
+                }
+            }
+        }
+
         // 인벤토리 내용을 화면에 보여주는 기능
         public void ShowInventory()
         {
             Console.WriteLine("\n=========[인벤토리]=========");
 
             // 저장된 아이템의 개수가 0이라면
-            if (_minerals.Count == 0) 
+            if (_minerals.Count == 0)
             {
                 Console.WriteLine("보유한 광물이 없습니다.");
             }
             // 저장된 아이템이 있다면
             else
             {
-                // 딕셔너리에 있는 모든 아이템에 대해 한번씩 코드를 실행
+                // 모든 아이템에 대해 한번씩 코드를 실행
                 foreach (var mineralPair in _minerals)
                 {
                     // 광물의 이름과 개수 출력
@@ -75,8 +87,14 @@ namespace MiningGame
         public bool HasPickaxe(Pickaxe requiredPickaxe)
         {
             // 내가 가진 모든 곡괭이가 들어있는 _pickaxes 리스트에,
-            // 광산에서 요구하는 곡괭이(requiredPickaxe)가 포함되어 있는지(.Contains) 확인 후 결과 반환
+            // 광산에서 요구하는 곡괭이(requiredPickaxe)가 포함되어 있는지 확인 후 결과 반환
             return _pickaxes.Contains(requiredPickaxe);
+        }
+
+        // 외부에서 광물 딕셔너리를 직접 요청할 수 있는 메서드
+        public Dictionary<Mineral, int> GetMinerals()
+        {
+            return _minerals;
         }
     }
 }
