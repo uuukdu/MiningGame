@@ -1,0 +1,26 @@
+[33mcommit 4a5f9359c272b6a0f856b65b5695ea273682c3f1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: uuukdu <uuukdu@gmail.com>
+Date:   Thu Oct 9 15:43:29 2025 +0900
+
+    feat : 광산, 상점 기능 추가
+    
+    광산 상점 기능 추가
+    SetCursorPosition을 사용해서 부드러운 화면 구현
+
+[33mcommit 55dd708eb4371597645561c4dce837ba2fef5004[m
+Author: uuukdu <uuukdu@gmail.com>
+Date:   Tue Oct 7 21:21:55 2025 +0900
+
+    feat: 게임 기본 구조 구현
+
+[33mcommit 8ff4f1ddf7b17690274d47e0359e269eea755a7a[m
+Author: uuukdu <uuukdu@gmail.com>
+Date:   Tue Oct 7 17:51:28 2025 +0900
+
+    feat : 기본 구조 생성 및 설정
+
+[33mcommit 85681e743f026bbb07e4521172cd5d40f02e150c[m
+Author: uuukdu <uuukdu@gmail.com>
+Date:   Tue Oct 7 17:22:41 2025 +0900
+
+    Initial commit

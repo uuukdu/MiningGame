@@ -40,30 +40,26 @@ namespace MiningGame
                 Console.WriteLine("1. 광산 이동");
                 Console.WriteLine("2. 상점 이동");
                 Console.WriteLine("3. 내 정보 보기");
-                Console.WriteLine("4. 게임 종료");
+                Console.WriteLine("\nESC키를 누르면 게임을 종료합니다.");
                 Console.WriteLine("====================");
-                Console.Write(">> ");
-                string choice = Console.ReadLine(); // 사용자 입력 받기
 
-                switch (choice)
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                switch (keyInfo.Key)
                 {
-                    case "1":
+                    case ConsoleKey.D1:
                         ShowMineMenu();
                         break;
-                    case "2":
+                    case ConsoleKey.D2:
                         _shop.ShowMenu(_player);
                         break;
-                    case "3":
+                    case ConsoleKey.D3:
                         _player.ShowStatus();
                         Console.WriteLine("\n아무 키나 누르면 메뉴로 돌아갑니다.");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                         break;
-                    case "4":
+                    case ConsoleKey.Escape:
                         _isRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("\n>> 잘못된 입력입니다. 다시 선택해주세요.");
-                        Console.ReadKey();
                         break;
                 }
             }
@@ -80,22 +76,27 @@ namespace MiningGame
                 Console.WriteLine("2. 철 광산");
                 Console.WriteLine("3. 금 광산");
                 Console.WriteLine("4. 다이아몬드 광산");
-                Console.WriteLine("5. 뒤로가기");
+                Console.WriteLine("\n뒤로 가려면 ESC키를 눌러주세요.");
                 Console.WriteLine("==========================");
-                Console.Write(">> ");
-                string choice = Console.ReadLine();
 
-                switch (choice)
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                switch (keyInfo.Key)
                 {
-                    case "1": EnterMine(Mines.StoneMine); break;
-                    case "2": EnterMine(Mines.IronMine); break;
-                    case "3": EnterMine(Mines.GoldMine); break;
-                    case "4": EnterMine(Mines.DiamondMine); break;
-                    case "5": return;
-                    default:
-                        Console.WriteLine("\n>> 잘못된 입력입니다. 다시 선택해주세요.");
-                        Console.ReadKey();
+                    case ConsoleKey.D1:
+                        EnterMine(Mines.StoneMine);
                         break;
+                    case ConsoleKey.D2:
+                        EnterMine(Mines.IronMine);
+                        break;
+                    case ConsoleKey.D3:
+                        EnterMine(Mines.GoldMine);
+                        break;
+                    case ConsoleKey.D4:
+                        EnterMine(Mines.DiamondMine);
+                        break;
+                    case ConsoleKey.Escape:
+                        return;
                 }
             }
         }
@@ -114,7 +115,7 @@ namespace MiningGame
             else
             {
                 Console.WriteLine($"\n>> '{mine.RequiredPickaxe.Name}'이(가) 필요합니다.");
-                Console.ReadKey();
+                Console.ReadKey(true);
             }
         }
 

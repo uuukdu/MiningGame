@@ -105,17 +105,17 @@ namespace MiningGame
 
             switch (player.PlayerDirection)
             {
-                case Direction.Up:
-                    targetY--;
+                case Direction.Up: 
+                    targetY--; 
                     break;
-                case Direction.Down:
-                    targetY++;
+                case Direction.Down: 
+                    targetY++; 
                     break;
-                case Direction.Left:
-                    targetX--;
+                case Direction.Left: 
+                    targetX--; 
                     break;
-                case Direction.Right:
-                    targetX++;
+                case Direction.Right: 
+                    targetX++; 
                     break;
             }
 

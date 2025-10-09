@@ -16,28 +16,23 @@ namespace MiningGame
                 Console.WriteLine($"\n어서 오세요, {player.Name} 님!");
                 Console.WriteLine($"보유 골드: {player.Gold} G");
                 Console.WriteLine("\n무엇을 하시겠습니까?");
-                Console.WriteLine("1. 광물 판매하기");
-                Console.WriteLine("2. 곡괭이 구매하기");
-                Console.WriteLine("3. 나가기");
+                Console.WriteLine("1. 아이템 판매하기");
+                Console.WriteLine("2. 아이템 구매하기");
+                Console.WriteLine("\n뒤로 가려면 ESC키를 눌러주세요.");
                 Console.WriteLine("==========================");
-                Console.Write(">> ");
 
-                string choice = Console.ReadLine();
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                switch (choice)
+                switch (keyInfo.Key)
                 {
-                    case "1":
-                        Sell(player); // 판매 기능 호출
+                    case ConsoleKey.D1:
+                        Sell(player);
                         break;
-                    case "2":
-                        Buy(player); // 구매 기능 호출
+                    case ConsoleKey.D2:
+                        Buy(player);
                         break;
-                    case "3":
-                        return; // 메서드를 종료하고 메인 메뉴로 돌아감
-                    default:
-                        Console.WriteLine("\n>> 잘못된 입력입니다. 다시 선택해주세요.");
-                        Console.ReadKey();
-                        break;
+                    case ConsoleKey.Escape:
+                        return;
                 }
             }
         }
@@ -57,7 +52,7 @@ namespace MiningGame
                 {
                     Console.WriteLine("\n판매할 광물이 없습니다.");
                     Console.WriteLine("============================");
-                    Console.ReadKey();
+                    Console.ReadKey(true);
                     return;
                 }
 
@@ -83,12 +78,12 @@ namespace MiningGame
                         player.Inventory.RemoveItem(selectedMineral, sellAmount);
 
                         Console.WriteLine($"\n>> {selectedMineral.Name} {sellAmount}개를 판매하여 {totalPrice} G를 얻었습니다!");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                     else
                     {
                         Console.WriteLine("\n>> 잘못된 수량입니다.");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                 }
                 else
@@ -131,7 +126,7 @@ namespace MiningGame
                     if (player.Inventory.HasPickaxe(selectedPickaxe))
                     {
                         Console.WriteLine("\n>> 이미 보유하고 있는 곡괭이입니다.");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                     else if (player.Gold >= selectedPickaxe.Price)
                     {
@@ -140,12 +135,12 @@ namespace MiningGame
                         player.EquippedPickaxe = selectedPickaxe; // 구매 후 바로 장착
 
                         Console.WriteLine($"\n>> {selectedPickaxe.Name}을(를) 구매했습니다! (자동으로 장착됩니다)");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                     else
                     {
                         Console.WriteLine("\n>> 골드가 부족합니다.");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                     }
                 }
                 else
