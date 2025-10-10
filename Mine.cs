@@ -41,7 +41,7 @@ namespace MiningGame
         {
             GenerateMap(); // 랜덤 맵 생성
 
-            // 플레이어의 현재 위치를 맵의 중앙으로 초기화합니다.
+            // 플레이어의 현재 위치를 맵의 중앙으로 초기화
             int playerX = MapWidth / 2;
             int playerY = MapHeight / 2;
 
@@ -139,7 +139,6 @@ namespace MiningGame
                 case Direction.Right: targetX++; break;
             }
 
-            // 3x3 범위를 순회
             for (int y = targetY - 1; y <= targetY + 1; y++)
             {
                 for (int x = targetX - 1; x <= targetX + 1; x++)
@@ -288,13 +287,13 @@ namespace MiningGame
         private void DrawBlock(int x, int y)
         {
             // Console.SetCursorPosition은 다음에 출력될 텍스트의 위치를 지정합니다.
-            // x좌표에 2를 곱하는 이유는 콘솔에서 글자 하나가 세로 길이에 비해 가로 길이가 짧기 때문입니다.
+            // x좌표에 2를 곱하는 이유는 콘솔에서 글자 하나가 세로 길이에 비해 가로 길이가 짧기 때문
             Console.SetCursorPosition(x * 2, y + 1);
 
             BlockType block = _map[y, x];
             char blockChar = ' ';
 
-            // switch문으로 블록 타입에 맞는 색상과 문자를 설정합니다.
+            // switch문으로 블록 타입에 맞는 색상과 문자를 설정
             switch (block)
             {
                 case BlockType.Wall: Console.ForegroundColor = ConsoleColor.Red; blockChar = '■'; break;
@@ -304,11 +303,11 @@ namespace MiningGame
                 case BlockType.Gold: Console.ForegroundColor = ConsoleColor.Yellow; blockChar = '●'; break;
                 case BlockType.Diamond: Console.ForegroundColor = ConsoleColor.Cyan; blockChar = '●'; break;
                 case BlockType.Empty:
-                    Console.Write("  "); // 빈 공간은 공백 2칸으로 덮어씁니다.
+                    Console.Write("  "); // 빈 공간은 공백 2칸으로 덮어쓴다
                     return; // 더 이상 그릴 필요 없으므로 메서드 종료
             }
-            Console.Write(blockChar); // 선택된 문자를 출력합니다.
-            Console.ResetColor(); // 다음 출력에 영향을 주지 않도록 색상을 초기화합니다.
+            Console.Write(blockChar); // 선택된 문자를 출력한다
+            Console.ResetColor(); // 다음 출력에 영향을 주지 않도록 색상을 초기화한다
         }
 
         // 플레이어 캐릭터 출력
